@@ -21,11 +21,11 @@
 
 <div class="mb-3">
   <label for="kejadian" class="form-label">Kejadian</label>
- <select th:field="*{kejadian1}">
+ <select th:field="*{kejadian}">
                          <option value=""> -- </option>
-                         <option th:each="kejadian1 : ${listKejadian}"
-                            th:value="${kejadian1.idKejadian}"
-                            th:utext="${kejadian1.namaKejadian}"/>
+                         <option th:each="kejadian : ${listKejadian}"
+                            th:value="${kejadian.idKejadian}"
+                            th:utext="${kejadian.namaKejadian}"/>
 </select>
 </div>
 

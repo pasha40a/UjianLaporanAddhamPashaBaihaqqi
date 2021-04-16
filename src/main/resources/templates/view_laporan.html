@@ -33,7 +33,7 @@
     <tr th:each="laporan : ${listLaporan}">
       <td scope="row" th:text="${laporan.idLaporan}"></td>
       <td th:text="${laporan.nama}"></td>
-      <td th:text="${laporan.kejadian1.namaKejadian}"></td>
+      <td th:text="${laporan.kejadian.namaKejadian}"></td>
        <td th:text="${laporan.alamat}"></td>
        <td th:text="${laporan.status}"></td>
      

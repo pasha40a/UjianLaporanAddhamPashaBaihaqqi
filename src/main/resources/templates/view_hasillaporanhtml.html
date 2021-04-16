@@ -22,6 +22,27 @@
     <h5 class="card-title">Nilai Ujian Anda adalah : <h1 th:text="${nilai.nilai}"> </h1></h5>
     <p class="card-text">Benar : <h1 th:text="${nilai.benar}"> </h1></p>
     <p class="card-text">Salah : <h1 th:text="${nilai.salah}"> </h1></p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Jumlah Ditanggapi
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Nilai Ujian Anda adalah : <h1 th:text="${nilai.nilai}"> </h1></h5>
+    <a th:attr="class=${active ==6 ? 'nav-link active' : 'nav-link'}"  th:href="@{'/plotmatakuliah/view/'}">Plot Mata Kuliah</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Jumlah Laporan dalam Proses
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Nilai Ujian Anda adalah : <h1 th:text="${nilai.nilai}"> </h1></h5>
+    <p class="card-text">Benar : <h1 th:text="${nilai.benar}"> </h1></p>
+    <p class="card-text">Salah : <h1 th:text="${nilai.salah}"> </h1></p>
     <a th:attr="class=${active ==6 ? 'nav-link active' : 'nav-link'}"  th:href="@{'/plotmatakuliah/view/'}">Plot Mata Kuliah</a>
   </div>
 </div>
