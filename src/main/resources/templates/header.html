@@ -1,0 +1,23 @@
+<div th:fragment="header">
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Laporan Polisi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a th:attr="class=${active == 0 ? 'nav-link active' : 'nav-link'}"  href="#">Home</a>
+       
+        <a th:attr="class=${active == 1 ? 'nav-link active' : 'nav-link'}"  th:href="@{'/dashboard/view/'}">Dashboard </a>
+        <a th:attr="class=${active == 2 ? 'nav-link active' : 'nav-link'}"  th:href="@{'/laporan/view/'}">Proses Laporan </a>
+        <a th:attr="class=${active == 3 ? 'nav-link active' : 'nav-link'}"  th:href="@{'/laporan/add/'}">Tambah Laporan </a>
+        <a th:attr="class=${active == 4 ? 'nav-link active' : 'nav-link'}"  th:href="@{'/kejadian/view/'}">Lihat Kejadian </a>
+
+       </div>
+      </div>
+    </div>
+  </div>
+</nav>
+</div>
