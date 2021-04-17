@@ -26,7 +26,7 @@ public class Laporan {
 	private long idLaporan;
 	private String nama;
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="idKejadian")
+	@JoinColumn(name="id_kejadian")
 	private Kejadian kejadian;
 	private String alamat;
 	private int status;

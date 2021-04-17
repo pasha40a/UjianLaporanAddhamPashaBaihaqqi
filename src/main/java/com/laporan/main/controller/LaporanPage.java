@@ -1,12 +1,16 @@
 package com.laporan.main.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +23,13 @@ import com.laporan.main.entity.Laporan;
 import com.laporan.main.service.ModelKejadian;
 import com.laporan.main.service.ModelLaporan;
 import com.laporan.main.utility.FileUtility;
+
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Controller
 public class LaporanPage {
@@ -77,4 +88,38 @@ ModelKejadian modelKejadian;
 		return null;
 		
 	}
+	
+	@GetMapping("/laporan/print")
+	public String viewReportLaporan(Model model) {
+		exportPDF();
+		
+		return "redirect:/laporan/view";
+	}
+	public void exportPDF() {
+		try {
+		File file = ResourceUtils.getFile("classpath:laporan.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+		
+		List<Laporan> lstlaporan = modelLaporan.getAllLaporan();
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstlaporan);
+        
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy","Juaracoding");
+        
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        String path = "D:\\laporan.pdf";
+        JasperExportManager.exportReportToPdfFile(jasperPrint,path);
+        
+       
+		
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+				
+	}
+
 }
