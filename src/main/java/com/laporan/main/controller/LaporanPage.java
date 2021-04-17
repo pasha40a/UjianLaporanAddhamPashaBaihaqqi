@@ -116,10 +116,15 @@ ModelKejadian modelKejadian;
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
-		
-		
-		
-				
+					
+	}
+	@GetMapping("/dashboard/view")
+	public String viewIndexDashboard(Model model) {
+	
+
+	model.addAttribute("active",1);
+	
+	return "view_dashboard";
 	}
 
 }

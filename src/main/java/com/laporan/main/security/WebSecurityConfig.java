@@ -60,13 +60,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             */
     	
     http.authorizeRequests()
-    	//.antMatchers("/dashboard/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //.antMatchers("/dashboard/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     	.antMatchers("/Laporan/**").access("hasRole('ROLE_ADMIN')")
     	.antMatchers("/Kejadian/**").access("hasRole('ROLE_ADMIN')")
     	.antMatchers("/Laporan/add").access("hasRole('ROLE_USER')")
     	.and()
     	.formLogin().loginPage("/login")
-    	.defaultSuccessUrl("/laporan/view").permitAll()
+    	.defaultSuccessUrl("/dashboard/view").permitAll()
     	.and()
    
     	.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
